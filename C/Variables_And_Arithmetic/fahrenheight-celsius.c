@@ -1,5 +1,9 @@
 #include <stdio.h>
 
+#define LOWER 0
+#define UPPER 300
+#define STEP 20
+
 void red() {
     printf("\033[1;31m");
 }
@@ -14,14 +18,12 @@ void reset() {
 
 int main(void)
 {
-    int fahr, celsius;
-    int lower, upper, step;
+    float fahr, celsius;
+    float lower, upper, step;
 
-    lower = 0;      /* lower limit of temperature table */
-    upper = 300;    /* upper limit */
-    step = 20;      /* step size */
+   
 
-    fahr = lower;
+    fahr = LOWER;
     /* Change terminal output to Red */
     red();
 
@@ -31,7 +33,7 @@ int main(void)
     /* Change terminal output to default */
     reset();
 
-    while (fahr <= upper) {
+    while (fahr <= UPPER) {
         celsius = 5 * (fahr-32) / 9;
 
         if(celsius >= 35) {
@@ -44,9 +46,9 @@ int main(void)
        
         
        
-        printf("\t%d\t\t%d\n", fahr, celsius);
+        printf("\t%3.0f\t\t%6.1f\n", fahr, celsius);
         reset();
-        fahr = fahr + step;
+        fahr = fahr + STEP;
     }
 
 }
