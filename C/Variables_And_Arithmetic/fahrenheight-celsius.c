@@ -33,7 +33,15 @@ int main(void)
 
     while (fahr <= upper) {
         celsius = 5 * (fahr-32) / 9;
-        green();
+
+        if(celsius >= 35) {
+            /* Change terminal output to Red */
+            red();
+        }else {
+            /* Change terminal output to Green */
+            green();
+        };
+       
         
        
         printf("\t%d\t\t%d\n", fahr, celsius);
